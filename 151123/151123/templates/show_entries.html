@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block body %}
+{% if session.logged_in %}
+<form action="{{ url_for('join') }}" method=post class=add-entry>
+    <dl>
+        <dt>id:
+        <dd><input type=text size=30 name= id>
+        <dt>password:
+        <dd><input type="password" name=passwd>
+        <dt>nickname:
+        <dd><input type=text size=30 name=nick>
+        <dd><input type=submit value=Share></dd>
+</dl>
+</form>
+{% endif %}
+<ul class=entries>
+    {% for entry in entries %}
+    <li>
+        <h2>ID:{{ entry.id }}</h2><h3>Password:{{ entry.passwd }}</h3><h3>Nickname{{ entry.nick }}</h3>
+        {% else %}
+    <li>
+        <em>Unbelievable. No entries here so far</em>
+        {% endfor %}
+</ul>
+{% endblock %}
